@@ -38,6 +38,7 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char *token2;
 size_t _strlen(const char *s);
 int _strncmp(char *s1, char *s2, size_t n);
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack);

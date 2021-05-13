@@ -7,7 +7,7 @@ void _push(stack_t **stack, unsigned int lines)
 		dprintf(STDERR_FILENO, "L%d: usage: push integer", lines);
 		exit(EXIT_FAILURE);
 	} */
-	printf("ejecutar opcode push\n");
+	printf("ejecutar opcode push %s\n", token2);
 	stack = stack;
 	lines = lines;
 }

@@ -10,20 +10,24 @@
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 {
 
-	char *token1 = NULL, *token2 = NULL, delimiter[] = " ";
+	char *token1 = NULL, delimiter[] = " \n";
 	int j = 0, cmp = 0; //  1 = 0
 
 	instruction_t options[] = {
 		{"push", _push}, {"pall", _pall}, {NULL, NULL}
 	};
-	
+
 	token1 = strtok(buffer, delimiter);
+	if (token1 == NULL)
+	{
+		return;
+	}
 	token2 = strtok(NULL, delimiter);
 
 	token2 = token2;
 	while (options[j].opcode != NULL)
 	{
-		cmp = strcmp(token1, options[j].opcode); 
+		cmp = strcmp(token1, options[j].opcode);
 		if (cmp == 0)
 		{
 			options[j].f(stack, lines);

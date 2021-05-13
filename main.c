@@ -1,5 +1,5 @@
 #include "monty.h"
-
+char *token2 = NULL;
 /**
  * main - monty interpreter main process
  * @ac: points to the previous element of the stack (or queue)
@@ -31,8 +31,6 @@ int main(int ac, char **av)
 
 	while (getline(&buffer, &bytes, fp) != EOF) // buf[i]
 	{
-
-		buffer[strlen(buffer) - 1] = '\0'; 
 		printf("linea %d: %s\n", lines, buffer);
 		valid_opcodes(buffer, lines, &stack_m);
 		lines++;

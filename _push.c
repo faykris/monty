@@ -10,13 +10,16 @@ void _push(stack_t **stack, unsigned int lines)
 	int data = 0;
 	stack_t *temp = NULL;
 
-	if (strcmp(token2, "0") != 0 && (token2 == NULL || atoi(token2) == 0))
+	if (strcmp(f_struct.token2, "0") != 0 &&
+		(f_struct.token2 == NULL || atoi(f_struct.token2) == 0))
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", lines);
+		free(f_struct.buffer);
 		free_stack(stack);
+		fclose(f_struct.fp);
 		exit(EXIT_FAILURE);
 	}
-	data = atoi(token2);
+	data = atoi(f_struct.token2);
 
 	if (*stack == NULL)
 	{

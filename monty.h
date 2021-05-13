@@ -19,9 +19,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -34,11 +34,27 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char *token2;
+/**
+ * struct struct_m - opcode and its function
+ * @token2: second argument
+ * @buffer: line text
+ * @fp: file pointer
+ *
+ * Description: free variables
+ */
+typedef struct struct_m
+{
+	char *token2;
+	char *buffer;
+	FILE *fp;
+} struct_f;
+
+extern struct_f f_struct;
+struct_f f_struct;
 
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack);
 void free_stack(stack_t **stack);

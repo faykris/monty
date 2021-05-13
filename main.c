@@ -1,5 +1,5 @@
 #include "monty.h"
-char *token2 = NULL;
+
 /**
  * main - monty interpreter main process
  * @ac: points to the previous element of the stack (or queue)
@@ -11,9 +11,7 @@ int main(int ac, char **av)
 {
 	size_t bytes = 0;
 	unsigned int lines = 0;
-	char  *buffer = NULL;
 	stack_t *stack = NULL;
-	FILE *fp;
 
 	if (ac != 2)
 	{
@@ -21,20 +19,20 @@ int main(int ac, char **av)
 		exit(EXIT_FAILURE);
 	}
 
-	fp = fopen(av[1], "r");
-	if (fp == NULL)
+	f_struct.fp = fopen(av[1], "r");
+	if (f_struct.fp == NULL)
 	{
 		fprintf(stderr, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&buffer, &bytes, fp) != EOF)
+	while (getline(&f_struct.buffer, &bytes, f_struct.fp) != EOF)
 	{
 		lines++;
-		valid_opcodes(buffer, lines, &stack);
+		valid_opcodes(f_struct.buffer, lines, &stack);
 	}
-	free(buffer);
+	free(f_struct.buffer);
 	free_stack(&stack);
-	fclose(fp);
+	fclose(f_struct.fp);
 	return (0);
 }

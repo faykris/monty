@@ -22,9 +22,9 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 	{
 		return;
 	}
-	token2 = strtok(NULL, delimiter);
+	f_struct.token2 = strtok(NULL, delimiter);
 
-	token2 = token2;
+	f_struct.token2 = f_struct.token2;
 	while (options[j].opcode != NULL)
 	{
 		cmp = strcmp(token1, options[j].opcode);
@@ -40,6 +40,7 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", lines, token1);
 		free(buffer);
 		free_stack(stack);
+		fclose(f_struct.fp);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -7,16 +7,19 @@
  **/
 void _pall(stack_t **stack, unsigned int lines)
 {
+	stack_t *temp;
+
 	if (*stack == NULL)
 	{
 		return;
 	}
 	else
 	{
-		while (*stack != NULL)
+		temp = *stack;
+		while (temp != NULL)
 		{
-			printf("%d\n", (*stack)->n);
-			*stack = (*stack)->prev;
+			printf("%d\n", temp->n);
+			temp = temp->prev;
 		}
 	}
 	lines = lines;

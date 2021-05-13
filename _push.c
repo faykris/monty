@@ -13,6 +13,7 @@ void _push(stack_t **stack, unsigned int lines)
 	if (strcmp(token2, "0") != 0 && (token2 == NULL || atoi(token2) == 0))
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", lines);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 	data = atoi(token2);

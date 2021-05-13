@@ -34,5 +34,7 @@ int main(int ac, char **av)
 		valid_opcodes(buffer, lines, &stack);
 	}
 	free(buffer);
+	free_stack(&stack);
+	fclose(fp);
 	return (0);
 }

@@ -38,6 +38,8 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 	if (options[j].opcode == NULL)
 	{
 		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", lines, token1);
+		free(buffer);
+		free_stack(stack);
 		exit(EXIT_FAILURE);
 	}
 }

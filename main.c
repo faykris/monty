@@ -9,49 +9,36 @@
  */
 int main(int ac, char **av)
 {
-	int fd = 0, i = 0, j = 0;
+/*	int fd = 0, i = 0, j = 0, bytes = 0; */
+	size_t bytes = 0;
 	unsigned int lines = 1;
-	char *buf, *buffer;
+	char  *buffer = NULL; /* *buf = NULL, */
 	stack_t *stack_m = NULL;
+	FILE *fp;
 
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
+
+	fp = fopen(av[1], "r");
+	if (fp == NULL)
 	{
-		dprintf(STDERR_FILENO, "Can't open file %s\n", av[1]);
+		fprintf(stderr, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
-	buf = malloc(sizeof(char) * BUFSIZ);
-	buffer = malloc(sizeof(char) * BUFSIZ);
-	if (buf == NULL || buffer == NULL)
+	while (getline(&buffer, &bytes, fp) != EOF) // buf[i]
 	{
-		dprintf(STDERR_FILENO, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
-	}
-	read(fd, buf, BUFSIZ);
-	close(fd);
 
-	while (buf[i])
-	{
-		while (buf[i] != '\n')
-		{
-			buffer[j] = buf[i];
-			j++;
-			i++;
-		}
-		buffer[j]= '\0';
-		valid_opcodes(buffer, av, lines, &stack_m);
-		j = 0;
+		buffer[strlen(buffer) - 1] = '\0'; 
+		printf("linea %d: %s\n", lines, buffer);
+		valid_opcodes(buffer, lines, &stack_m);
 		lines++;
-		i++;
 	}
 	printf("---------------\nTotal lineas: %d\n", lines);
-	free(buf);
+/*	free(buf); */
 	free(buffer);
 	return (0);
 }

@@ -7,29 +7,23 @@
  *
  * Return: none
  */
-void valid_opcodes(char *buffer, char **av, unsigned int lines, stack_t **stack)
+void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 {
-/*	int i;
-	char *opcode; */
 
-	char *token = NULL, delimiter[] = " ";
-	int i = 0, j = 0, cmp = 0;
+	char *token1 = NULL, *token2 = NULL, delimiter[] = " ";
+	int j = 0, cmp = 0; //  1 = 0
 
 	instruction_t options[] = {
 		{"push", _push}, {"pall", _pall}, {NULL, NULL}
 	};
 	
-	token = strtok(buffer, delimiter);
-	for (i = 0; token != NULL; i++)
-	{
-		av[i] = token;
-		token = strtok(NULL, delimiter);
-	}
-	av[i] = NULL;
+	token1 = strtok(buffer, delimiter);
+	token2 = strtok(NULL, delimiter);
 
+	token2 = token2;
 	while (options[j].opcode != NULL)
 	{
-		cmp = strcmp(av[0], options[j].opcode);
+		cmp = strcmp(token1, options[j].opcode); 
 		if (cmp == 0)
 		{
 			options[j].f(stack, lines);
@@ -39,7 +33,7 @@ void valid_opcodes(char *buffer, char **av, unsigned int lines, stack_t **stack)
 	}
 	if (options[j].opcode == NULL)
 	{
-		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", lines, av[0]);
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", lines, token1);
 		exit(EXIT_FAILURE);
 	}
 }

@@ -11,7 +11,7 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 {
 
 	char *token1 = NULL, delimiter[] = " \n";
-	int j = 0, cmp = 0; //  1 = 0
+	int j = 0, cmp = 0;
 
 	instruction_t options[] = {
 		{"push", _push}, {"pall", _pall}, {NULL, NULL}

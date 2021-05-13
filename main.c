@@ -9,11 +9,10 @@ char *token2 = NULL;
  */
 int main(int ac, char **av)
 {
-/*	int fd = 0, i = 0, j = 0, bytes = 0; */
 	size_t bytes = 0;
-	unsigned int lines = 1;
-	char  *buffer = NULL; /* *buf = NULL, */
-	stack_t *stack_m = NULL;
+	unsigned int lines = 0;
+	char  *buffer = NULL;
+	stack_t *stack = NULL;
 	FILE *fp;
 
 	if (ac != 2)
@@ -28,15 +27,12 @@ int main(int ac, char **av)
 		fprintf(stderr, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-
-	while (getline(&buffer, &bytes, fp) != EOF) // buf[i]
+	
+	while (getline(&buffer, &bytes, fp) != EOF)
 	{
-		printf("linea %d: %s\n", lines, buffer);
-		valid_opcodes(buffer, lines, &stack_m);
 		lines++;
+		valid_opcodes(buffer, lines, &stack);	
 	}
-	printf("---------------\nTotal lineas: %d\n", lines);
-/*	free(buf); */
 	free(buffer);
 	return (0);
 }

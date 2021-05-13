@@ -10,22 +10,19 @@
 int main(int ac, char **av)
 {
 	int fd = 0, i = 0, j = 0;
-	unsigned int r = 0, w = 0, lines = 0;
+	unsigned int lines = 1;
 	char *buf, *buffer;
 	stack_t *stack_m = NULL;
 
 	if (ac != 2)
 	{
-		write(STDOUT_FILENO, "USAGE: monty file\n", 19);
+		dprintf(STDERR_FILENO, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
-
 	fd = open(av[1], O_RDONLY);
 	if (fd == -1)
 	{
-		write(STDOUT_FILENO, "Can't open file ", 17);
-		write(STDOUT_FILENO, av[1], _strlen(av[1]));
-		write(STDOUT_FILENO, "\n", 1);
+		dprintf(STDERR_FILENO, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
 
@@ -33,15 +30,11 @@ int main(int ac, char **av)
 	buffer = malloc(sizeof(char) * BUFSIZ);
 	if (buf == NULL || buffer == NULL)
 	{
-		write(STDOUT_FILENO, "Error: malloc failed\n", 22);
+		dprintf(STDERR_FILENO, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	r = read(fd, buf, BUFSIZ);
+	read(fd, buf, BUFSIZ);
 	close(fd);
-
-	w = write(STDOUT_FILENO, buf, r);
-
-	printf("---------------\nLongitud archivo: %d\n", w);
 
 	while (buf[i])
 	{
@@ -52,7 +45,7 @@ int main(int ac, char **av)
 			i++;
 		}
 		buffer[j]= '\0';
-		valid_opcodes(buffer, lines, &stack_m);
+		valid_opcodes(buffer, av, lines, &stack_m);
 		j = 0;
 		lines++;
 		i++;

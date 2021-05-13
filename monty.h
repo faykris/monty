@@ -40,5 +40,9 @@ typedef struct instruction_s
 
 size_t _strlen(const char *s);
 int _strncmp(char *s1, char *s2, size_t n);
-void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack);
+void valid_opcodes(char *buffer, char **av, unsigned int lines, stack_t **stack);
+
+void _push(stack_t **stack, unsigned int lines);
+void _pall(stack_t **stack, unsigned int lines);
+
 #endif

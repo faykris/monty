@@ -7,24 +7,39 @@
  *
  * Return: none
  */
-void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
+void valid_opcodes(char *buffer, char **av, unsigned int lines, stack_t **stack)
 {
-	int i;
-	char *opcode;
+/*	int i;
+	char *opcode; */
 
-	opcode = malloc(sizeof(char) * 5);
-	for (i = 0; buffer[i]; i++)
+	char *token = NULL, delimiter[] = " ";
+	int i = 0, j = 0, cmp = 0;
+
+	instruction_t options[] = {
+		{"push", _push}, {"pall", _pall}, {NULL, NULL}
+	};
+	
+	token = strtok(buffer, delimiter);
+	for (i = 0; token != NULL; i++)
 	{
-	/*	opcode = buffer[i] + buffer[i + 1] + buffer[i + 2] + buffer[i + 3]; */
-		if (_strncmp(opcode, "push", 4) == 0)
-		{
-			printf("Estoy en funcion de push\n");
-		}
-		else if (_strncmp(opcode, "pall", 4) == 0)
-		{
-			printf("Estoy en funcion de pall\n");
-		}
+		av[i] = token;
+		token = strtok(NULL, delimiter);
 	}
-	printf("Imprimir linea: %d\n", lines);
-	stack = stack; /* mientras miro como usarlo */
+	av[i] = NULL;
+
+	while (options[j].opcode != NULL)
+	{
+		cmp = strcmp(av[0], options[j].opcode);
+		if (cmp == 0)
+		{
+			options[j].f(stack, lines);
+			break;
+		}
+		j++;
+	}
+	if (options[j].opcode == NULL)
+	{
+		dprintf(STDERR_FILENO, "L%d: unknown instruction %s\n", lines, av[0]);
+		exit(EXIT_FAILURE);
+	}
 }

@@ -1,11 +1,11 @@
 #include "monty.h"
 
 /**
- * valid_opcodes - validates the different opcodes in a line
- * @buffer: first string to compare
- * @lines: second string to compare
- *
- * Return: none
+ * valid_opcodes - Validates the different opcodes in a line
+ * @buffer: First string to compare
+ * @lines: Second string to compare
+ * @stack: Elements is a data structure
+ * Return: None
  */
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 {

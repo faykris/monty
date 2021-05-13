@@ -27,11 +27,11 @@ int main(int ac, char **av)
 		fprintf(stderr, "Can't open file %s\n", av[1]);
 		exit(EXIT_FAILURE);
 	}
-	
+
 	while (getline(&buffer, &bytes, fp) != EOF)
 	{
 		lines++;
-		valid_opcodes(buffer, lines, &stack);	
+		valid_opcodes(buffer, lines, &stack);
 	}
 	free(buffer);
 	return (0);

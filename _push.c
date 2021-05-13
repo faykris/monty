@@ -1,5 +1,10 @@
 #include "monty.h"
-
+/**
+ * _push - Function that add an element to the top of a stack
+ * @stack: Elements is a data structure
+ * @lines: Lines of read past bytecodes
+ * Return: None.
+ **/
 void _push(stack_t **stack, unsigned int lines)
 {
 	int data = 0;
@@ -11,7 +16,7 @@ void _push(stack_t **stack, unsigned int lines)
 		exit(EXIT_FAILURE);
 	}
 	data = atoi(token2);
-	
+
 	if (*stack == NULL)
 	{
 		*stack = malloc(sizeof(stack_t));
@@ -25,7 +30,7 @@ void _push(stack_t **stack, unsigned int lines)
 		(*stack)->prev = NULL;
 	}
 	else
-	{	
+	{
 		temp = malloc(sizeof(stack_t));
 		if (temp == NULL)
 		{
@@ -38,20 +43,4 @@ void _push(stack_t **stack, unsigned int lines)
 		(*stack)->next = temp;
 		*stack = temp;
 	}
-}
-void _pall(stack_t **stack, unsigned int lines)
-{
-	if(*stack == NULL)
-	{
-		return;
-	}
-	else
-	{
-		while(*stack != NULL)
-		{
-			printf("%d\n",(*stack)->n);
-			*stack = (*stack)->prev;
-		}
-	}
-	lines = lines;
 }

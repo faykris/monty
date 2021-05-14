@@ -24,7 +24,8 @@ void _pchar(stack_t **stack, unsigned int lines)
 		}
 		else
 		{
-			dprintf(STDERR_FILENO, "L%d: can't pchar, stack empty\n", lines);
+			dprintf(STDERR_FILENO, "L%d: can't pchar, value out of range\n",
+					lines);
 			free(f_struct.buffer);
 			free_stack(stack);
 			fclose(f_struct.fp);

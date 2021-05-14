@@ -11,7 +11,7 @@ void _pop(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL)
 	{
-		printf("L%d: can't pop an empty stack", lines);
+		printf("L%d: can't pop an empty stack\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);
@@ -21,8 +21,6 @@ void _pop(stack_t **stack, unsigned int lines)
 	{
 		tmp = *stack;
 		*stack = (*stack)->prev;
-		(*stack)->next = NULL;
-
 		free(tmp);
 	}
 }

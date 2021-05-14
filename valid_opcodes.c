@@ -14,7 +14,7 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 	int j = 0, cmp = 0;
 
 	instruction_t options[] = {
-		{"push", _push}, {"pall", _pall},
+		{"push", _push}, {"pall", _pall}, {"pint", _pint},
 		{"nop", _nop}, {NULL, NULL}
 	};
 

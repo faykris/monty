@@ -63,6 +63,7 @@ int is_number(char *str);
 void _push(stack_t **stack, unsigned int lines);
 void _pall(stack_t **stack, unsigned int lines);
 void _pint(stack_t **stack, unsigned int lines);
+void _swap(stack_t **stack, unsigned int lines);
 void _nop(stack_t **stack, unsigned int lines);
 
 #endif

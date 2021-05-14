@@ -10,8 +10,7 @@ void _push(stack_t **stack, unsigned int lines)
 	int data = 0;
 	stack_t *temp = NULL;
 
-	if (strcmp(f_struct.token2, "0") != 0 &&
-		(f_struct.token2 == NULL || atoi(f_struct.token2) == 0))
+	if (f_struct.token2 == NULL || is_number(f_struct.token2) == 0)
 	{
 		dprintf(STDERR_FILENO, "L%d: usage: push integer\n", lines);
 		free(f_struct.buffer);

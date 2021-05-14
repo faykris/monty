@@ -58,6 +58,7 @@ struct_f f_struct;
 
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack);
 void free_stack(stack_t **stack);
+int is_number(char *str);
 
 void _push(stack_t **stack, unsigned int lines);
 void _pall(stack_t **stack, unsigned int lines);

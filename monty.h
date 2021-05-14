@@ -69,5 +69,6 @@ void _pop(stack_t **stack, unsigned int lines);
 void _add(stack_t **stack, unsigned int lines);
 void _sub(stack_t **stack, unsigned int lines);
 void _div(stack_t **stack, unsigned int lines);
+void _mul(stack_t **stack, unsigned int lines);
 
 #endif

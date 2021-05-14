@@ -17,7 +17,7 @@ void _pchar(stack_t **stack, unsigned int lines)
 	}
 	else
 	{
-		if ((*stack)->n >= 0 || (*stack)->n <= 127)
+		if ((*stack)->n >= 0 && (*stack)->n <= 127)
 		{
 			putchar((*stack)->n);
 			putchar('\n');

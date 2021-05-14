@@ -17,7 +17,8 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 		{"push", _push}, {"pall", _pall}, {"pint", _pint},
 		{"swap", _swap}, {"nop", _nop}, {"add", _add},
 		{"pop", _pop}, {"sub", _sub}, {"div", _div},
-		{"mul", _mul}, {"mod", _mod}, {"pstr", _pstr},
+		{"mul", _mul}, {"mod", _mod}, {"pchar", _pchar},
+		{"pstr", _pstr},
 		{NULL, NULL}
 	};
 

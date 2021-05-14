@@ -66,5 +66,6 @@ void _pint(stack_t **stack, unsigned int lines);
 void _swap(stack_t **stack, unsigned int lines);
 void _nop(stack_t **stack, unsigned int lines);
 void _pop(stack_t **stack, unsigned int lines);
+void _add(stack_t **stack, unsigned int lines);
 
 #endif

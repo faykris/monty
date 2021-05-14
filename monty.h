@@ -61,5 +61,6 @@ void free_stack(stack_t **stack);
 
 void _push(stack_t **stack, unsigned int lines);
 void _pall(stack_t **stack, unsigned int lines);
+void _nop(stack_t **stack, unsigned int lines);
 
 #endif

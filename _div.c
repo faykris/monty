@@ -12,7 +12,7 @@ void _div(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		printf("L%d: can't div, stack too short\n", lines);
+		dprintf(STDERR_FILENO, "L%d: can't div, stack too short\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);
@@ -20,7 +20,7 @@ void _div(stack_t **stack, unsigned int lines)
 	}
 	else if ((*stack)->n == 0)
 	{
-		printf("L%d: division by zero\n", lines);
+		dprintf(STDERR_FILENO, "L%d: division by zero\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);

@@ -12,7 +12,7 @@ void _add(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		printf("L%d: can't add, stack too short\n", lines);
+		dprintf(STDERR_FILENO,"L%d: can't add, stack too short\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);

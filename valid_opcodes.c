@@ -21,7 +21,7 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 	};
 
 	token1 = strtok(buffer, delimiter);
-	if (token1 == NULL)
+	if (token1 == NULL || token1[0] == '#')
 	{
 		return;
 	}

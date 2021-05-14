@@ -12,7 +12,7 @@ void _sub(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL || (*stack)->prev == NULL)
 	{
-		printf("L%d: can't sub, stack too short\n", lines);
+		dprintf(STDERR_FILENO, "L%d: can't sub, stack too short\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);

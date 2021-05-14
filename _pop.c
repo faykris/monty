@@ -11,7 +11,7 @@ void _pop(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL)
 	{
-		dprintf(STDERR_FILENO,"L%d: can't pop an empty stack\n", lines);
+		dprintf(STDERR_FILENO, "L%d: can't pop an empty stack\n", lines);
 		free(f_struct.buffer);
 		free_stack(stack);
 		fclose(f_struct.fp);

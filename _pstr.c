@@ -8,7 +8,6 @@
 void _pstr(stack_t **stack, unsigned int lines)
 {
 	stack_t *temp;
-	char asc;
 
 	if (*stack == NULL)
 	{
@@ -19,12 +18,18 @@ void _pstr(stack_t **stack, unsigned int lines)
 		temp = *stack;
 		while (temp != NULL)
 		{
-			asc = putchar(temp->n);
-			if ((asc >= 65 && asc <= 90) || (asc >= 97 && asc <= 122))
-				printf("%c", asc);
+			if (temp->n == 0 || !(temp->n >= 1  || temp->n <= 255))
+			{
+				break;
+			}
+			if ((temp->n >= 65 && temp->n <= 90) ||
+				(temp->n >= 97 && temp->n <= 122))
+			{
+				putchar(temp->n);
+			}
 			temp = temp->prev;
 		}
-		printf("\n");
+		putchar('\n');
 	}
 	lines = lines;
 }

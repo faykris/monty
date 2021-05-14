@@ -14,7 +14,8 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 	int j = 0, cmp = 0;
 
 	instruction_t options[] = {
-		{"push", _push}, {"pall", _pall}, {NULL, NULL}
+		{"push", _push}, {"pall", _pall},
+		{"nop", _nop}, {NULL, NULL}
 	};
 
 	token1 = strtok(buffer, delimiter);

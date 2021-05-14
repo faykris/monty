@@ -11,6 +11,7 @@ void _pstr(stack_t **stack, unsigned int lines)
 
 	if (*stack == NULL)
 	{
+		putchar('\n');
 		return;
 	}
 	else
@@ -18,7 +19,7 @@ void _pstr(stack_t **stack, unsigned int lines)
 		temp = *stack;
 		while (temp != NULL)
 		{
-			if (temp->n == 0 || !(temp->n >= 1  || temp->n <= 255))
+			if (temp->n == 0 || !(temp->n >= 1  && temp->n <= 127))
 			{
 				break;
 			}

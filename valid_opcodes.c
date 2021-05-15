@@ -18,7 +18,8 @@ void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack)
 		{"swap", _swap}, {"nop", _nop}, {"add", _add},
 		{"pop", _pop}, {"sub", _sub}, {"div", _div},
 		{"mul", _mul}, {"mod", _mod}, {"pchar", _pchar},
-		{"pstr", _pstr}, {"rotl", _rotl}, {NULL, NULL}
+		{"pstr", _pstr}, {"rotl", _rotl}, {"rotr", _rotr},
+		{NULL, NULL}
 	};
 
 	token1 = strtok(buffer, delimiter);

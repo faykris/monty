@@ -73,5 +73,6 @@ void _mul(stack_t **stack, unsigned int lines);
 void _mod(stack_t **stack, unsigned int lines);
 void _pchar(stack_t **stack, unsigned int lines);
 void _pstr(stack_t **stack, unsigned int lines);
+void _rotl(stack_t **stack, unsigned int lines);
 
 #endif

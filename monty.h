@@ -43,6 +43,7 @@ typedef struct instruction_s
  * @token2: second argument
  * @buffer: line text
  * @fp: file pointer
+ * @format: format code if a stack o a queue
  *
  * Description: free variables
  */
@@ -51,10 +52,15 @@ typedef struct struct_m
 	char *token2;
 	char *buffer;
 	FILE *fp;
+	int format;
 } struct_f;
 
 extern struct_f f_struct;
 struct_f f_struct;
+
+/*On Stack and On Queue format macros*/
+#define AS_STACK 0
+#define AS_QUEUE 1
 
 void valid_opcodes(char *buffer, unsigned int lines, stack_t **stack);
 void free_stack(stack_t **stack);
@@ -75,5 +81,7 @@ void _pchar(stack_t **stack, unsigned int lines);
 void _pstr(stack_t **stack, unsigned int lines);
 void _rotl(stack_t **stack, unsigned int lines);
 void _rotr(stack_t **stack, unsigned int lines);
+void _stack(stack_t **stack, unsigned int lines);
+void _queue(stack_t **stack, unsigned int lines);
 
 #endif

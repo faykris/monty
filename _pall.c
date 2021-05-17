@@ -16,10 +16,25 @@ void _pall(stack_t **stack, unsigned int lines)
 	else
 	{
 		temp = *stack;
-		while (temp != NULL)
+		if (f_struct.format == AS_QUEUE)
 		{
-			printf("%d\n", temp->n);
-			temp = temp->prev;
+			while (temp->prev != NULL)
+			{
+				temp = temp->prev;
+			}
+			while (temp != NULL)
+			{
+				printf("%d\n", temp->n);
+				temp = temp->next;
+			}
+		}
+		else
+		{
+			while (temp != NULL)
+			{
+				printf("%d\n", temp->n);
+				temp = temp->prev;
+			}
 		}
 	}
 	lines = lines;

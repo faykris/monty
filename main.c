@@ -13,6 +13,7 @@ int main(int ac, char **av)
 	unsigned int lines = 0;
 	stack_t *stack = NULL;
 
+	f_struct.format = AS_STACK;
 	if (ac != 2)
 	{
 		dprintf(STDERR_FILENO, "USAGE: monty file\n");
